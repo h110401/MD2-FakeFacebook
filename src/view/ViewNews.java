@@ -12,6 +12,8 @@ import model.account.User;
 import model.post.Post;
 import plugin.Menu;
 
+import static plugin.ConsoleColors.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,11 +33,18 @@ public class ViewNews {
         menu.addChoice("Back");
         menu.print();
 
-        int choice = Config.getValidInteger();
-
-        if (menu.indexOf("See All Post") == choice) this.formAllPost();
-        if (menu.indexOf("Manage Your Post") == choice) this.menuManageYourPost();
-        if (menu.indexOf("Back") == choice) return;
+        switch (Config.getValidInteger()) {
+            case 1:
+                this.formAllPost();
+                break;
+            case 2:
+                this.menuManageYourPost();
+                break;
+            case 3:
+                return;
+            default:
+                System.out.println("Invalid choice");
+        }
 
         menu();
     }
@@ -137,6 +146,9 @@ public class ViewNews {
             int likeNumber = likeController.getLikesByPostId(post.getId()).size();
             int commentNumber = commentController.getCommentsByPostId(post.getId()).size();
 
+            boolean isLiked = likeController.findLikePost(post.getId()) != -1;
+            String likeCommentBar = isLiked ? "|" + BLUE + " Like: %3d" + RESET + "                  Comment: %3d          |\n" : "| Like: %3d                  Comment: %3d          |\n";
+
             System.out.println(".--------------------------------------------------.");
             System.out.printf("| ID: %-" + (44 - timePassed.length()) + "d%s |\n", post.getId(), timePassed);
             System.out.printf("| Name: %-42s |\n", user.getName());
@@ -145,13 +157,13 @@ public class ViewNews {
             System.out.printf("|    %-45s |\n", post.getContent());
             System.out.println("|                                                  |");
             System.out.println("|--------------------------------------------------|");
-            System.out.printf("| Like: %3d                  Comment: %3d          |\n", likeNumber, commentNumber);
+            System.out.printf(likeCommentBar, likeNumber, commentNumber);
             System.out.println("'--------------------------------------------------'\n");
         }
     }
 
     private void formShowYourPosts() {
-        List<Post> yourPost = postController.getYourPost();
+        List<Post> yourPost = postController.getYourPosts();
         showPosts(yourPost);
         System.out.println("Enter post id to show details / 0 to back");
         int id = Config.getValidInteger();
@@ -185,6 +197,9 @@ public class ViewNews {
         int likeNumber = likeController.getLikesByPostId(post.getId()).size();
         List<Comment> commentList = commentController.getCommentsByPostId(post.getId());
 
+        boolean isLiked = likeController.findLikePost(id) != -1;
+        String likeCommentBar = isLiked ? "|" + BLUE + " Like: %3d" + RESET + "                  Comment: %3d          |\n" : "| Like: %3d                  Comment: %3d          |\n";
+
         System.out.println(".--------------------------------------------------.");
         System.out.printf("| Name: %-" + (42 - timePassed.length()) + "s%s |\n", user.getName(), timePassed);
         System.out.println("|--------------------------------------------------|");
@@ -192,18 +207,23 @@ public class ViewNews {
         System.out.printf("|    %-45s |\n", post.getContent());
         System.out.println("|                                                  |");
         System.out.println("|--------------------------------------------------|");
-        System.out.printf("| Like: %3d                  Comment: %3d          |\n", likeNumber, commentList.size());
+        System.out.printf(likeCommentBar, likeNumber, commentList.size());
         System.out.println("|--------------------------------------------------|");
 
         int i = 0;
         for (; i < commentList.size() - 1 && commentList.size() - 1 >= 0; i++) {
+            boolean isLikedComment = likeController.findLikeComment(commentList.get(i).getId()) != -1;
+            String likeComment = isLikedComment ? "| %-39s" + BLUE + "Like: %3d" + RESET + " |\n" : "| %-39sLike: %3d |\n";
+
             User userComment = userController.findById(commentList.get(i).getIdUser());
             System.out.printf("| %-41sID: %3d |\n", userComment.getName(), commentList.get(i).getId());
-            System.out.printf("| %-39sLike: %3d |\n", commentList.get(i).getContent(), likeController.getLikesByCommentId(commentList.get(i).getId()).size());
+            System.out.printf(likeComment, commentList.get(i).getContent(), likeController.getLikesByCommentId(commentList.get(i).getId()).size());
             System.out.println("|                                                  |");
         }
+        boolean isLikedComment = likeController.findLikeComment(commentList.get(i).getId()) != -1;
+        String likeComment = isLikedComment ? "| %-39s" + BLUE + "Like: %3d" + RESET + " |\n" : "| %-39sLike: %3d |\n";
         System.out.printf("| %-41sID: %3d |\n", userController.findById(commentList.get(i).getIdUser()).getName(), commentList.get(i).getId());
-        System.out.printf("| %-39sLike: %3d |\n", commentList.get(i).getContent(), likeController.getLikesByCommentId(commentList.get(i).getId()).size());
+        System.out.printf(likeComment, commentList.get(i).getContent(), likeController.getLikesByCommentId(commentList.get(i).getId()).size());
 
         System.out.println("'--------------------------------------------------'");
 

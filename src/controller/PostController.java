@@ -66,14 +66,14 @@ public class PostController {
         return availablePost;
     }
 
-    public List<Post> getYourPost() {
-        List<Post> yourPost = new ArrayList<>();
+    public List<Post> getYourPosts() {
+        List<Post> yourPosts = new ArrayList<>();
         for (Post post : getPostList()) {
             if (post.getIdUser() == currentUser.getId()) {
-                yourPost.add(post);
+                yourPosts.add(post);
             }
         }
-        return yourPost;
+        return yourPosts;
     }
 
     public int getLastId() {
@@ -81,7 +81,7 @@ public class PostController {
     }
 
     public ResponseMessenger editPost(PostDTO postDTO) {
-        if (postNotExistsById(postDTO.getId(), getYourPost())) {
+        if (postNotExistsById(postDTO.getId(), getYourPosts())) {
             return new ResponseMessenger("id_mismatch");
         }
         PostStatus postStatus;
@@ -109,7 +109,7 @@ public class PostController {
     }
 
     public ResponseMessenger deletePost(int id) {
-        if (postNotExistsById(id, getYourPost())) {
+        if (postNotExistsById(id, getYourPosts())) {
             return new ResponseMessenger("id_mismatch");
         }
         postService.remove(id);
@@ -136,7 +136,8 @@ public class PostController {
         long timePassed = to.getTime() - from.getTime();
         int second = (int) (timePassed / 1000) % 60;
         int minute = (int) (timePassed / (1000 * 60) % 60);
-        int hour   = (int) (timePassed / (1000 * 60 * 60) % 24);
-        return (hour != 0 ? hour + " hour" : (minute != 0 ? minute + " minute" : second + " second")) + " ago";
+        int hour = (int) (timePassed / (1000 * 60 * 60) % 24);
+        int day = (int) (timePassed / (1000 * 60 * 60 * 24));
+        return (day != 0 ? day + " day" : (hour != 0 ? hour + " hour" : (minute != 0 ? minute + " minute" : second + " second"))) + " ago";
     }
 }

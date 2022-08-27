@@ -123,9 +123,7 @@ public class ViewFriend {
         System.out.println("1. Accept request");
         System.out.println("2. Decline request");
 
-        int accept = Config.getValidInteger();
-
-        switch (accept) {
+        switch (Config.getValidInteger()) {
             case 1:
                 friendController.acceptRequest(currentUser.getId(), id);
                 System.out.println("Accept friend request");
@@ -141,7 +139,7 @@ public class ViewFriend {
 
     }
 
-    private void formFriendList() {
+    public void formFriendList() {
         System.out.println("*****FORM FRIEND LIST*****");
         System.out.printf("%-5s%-15s%n", "ID", "NAME");
         for (Integer i : currentUser.getProfile().getFriendList()) {

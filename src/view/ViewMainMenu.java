@@ -24,9 +24,7 @@ public class ViewMainMenu {
         menu.addChoice("Exit");
         menu.print();
 
-        int choice = Config.getValidInteger();
-
-        switch (choice) {
+        switch (Config.getValidInteger()) {
             case 1:
                 this.formLogin();
                 break;

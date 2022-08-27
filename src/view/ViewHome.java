@@ -32,6 +32,7 @@ public class ViewHome {
         Menu menu = new Menu();
         menu.addHeader("Welcome " + maxRole + ": " + currentUser.getName());
         menu.addChoice("News");
+        menu.addChoice("Messenger");
         menu.addChoice(notification);
         menu.addChoice("Friend Manager");
         if (maxRole == RoleName.ADMIN || maxRole == RoleName.PM) {
@@ -44,6 +45,7 @@ public class ViewHome {
         int choice = Config.getValidInteger();
 
         if (menu.indexOf("News") == choice) new ViewNews().menu();
+        if(menu.indexOf("Messenger") == choice) new ViewMessenger().menu();
         if (menu.indexOf(notification) == choice) this.formNotification();
         if (menu.indexOf("Friend Manager") == choice) {
             new ViewFriend().menu();
