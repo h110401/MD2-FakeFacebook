@@ -1,7 +1,7 @@
 package service.message;
 
 import config.Config;
-import model.Message;
+import model.messenger.Message;
 
 import java.util.ArrayList;
 import java.util.List;
