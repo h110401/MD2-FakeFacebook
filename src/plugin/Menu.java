@@ -81,20 +81,7 @@ public class Menu {
 
 
     private void setMaxWidth() {
-        int max = 0;
-        if (preset) {
-            maxWidth = width > 30 ? width : maxWidth;
-        } else {
-            if (header.length() > max) {
-                max = header.length();
-            }
-            for (String choice : choices) {
-                if (choice.length() > max) {
-                    max = choice.length();
-                }
-            }
-            maxWidth = max > 30 ? width : maxWidth;
-        }
+        int max = 50;
     }
 
     private void printUpLine() {

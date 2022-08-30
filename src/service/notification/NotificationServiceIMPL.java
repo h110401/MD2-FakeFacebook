@@ -4,15 +4,17 @@ import config.Config;
 import model.Notification;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class NotificationServiceIMPL implements INotificationService {
 
     private static final String PATH_NOTIFICATION = "src/data/notification.txt";
-
     private static final Config<List<Notification>> config = new Config<>();
 
     private static List<Notification> notificationList = config.read(PATH_NOTIFICATION);
+
 
     static {
         if (notificationList == null) {
@@ -68,11 +70,4 @@ public class NotificationServiceIMPL implements INotificationService {
         return notifications;
     }
 
-    @Override
-    public void clear(int id) {
-        for (Notification notification : getNotificationById(id)) {
-            notificationList.remove(notification);
-        }
-        updateData();
-    }
 }

@@ -9,5 +9,4 @@ public interface INotificationService extends IGenericService<Notification> {
 
     List<Notification> getNotificationById(int id);
 
-    void clear(int id);
 }

@@ -1,18 +1,17 @@
 package view;
 
 import config.Config;
-import controller.NotificationController;
-import controller.UserController;
+import controller.*;
 import dto.response.ResponseMessenger;
-import model.Notification;
+import model.post.Post;
 import model.role.RoleName;
 import model.account.User;
+import plugin.Alert;
 import plugin.Menu;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static plugin.ConsoleColors.*;
 
 public class ViewHome {
 
@@ -20,14 +19,79 @@ public class ViewHome {
     private final UserController userController = new UserController();
     private final List<User> userList = userController.getUserList();
     private final User currentUser = userController.getCurrentUser();
+    private final PostController postController = new PostController();
+    private final CommentController commentController = new CommentController();
+    private final LikeController likeController = new LikeController();
 
+    public void mainMenu(int index) {
+        List<Post> availablePosts = new ArrayList<>(postController.getAvailablePosts());
+        Collections.reverse(availablePosts);
+
+        printPost(availablePosts, index);
+
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.print("┃  Enter your choice: ");
+        int choice = Config.getValidInteger();
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+        switch (choice) {
+            case 1:
+                new ViewMessenger().menu();
+                break;
+            case 2:
+                new ViewFriend().menu();
+                break;
+            case 3:
+                Alert.printCyanAlert("Already in home page!");
+                break;
+            case 4:
+                new ViewNotification().formNotification(0);
+                break;
+            case 5:
+                menu();
+                break;
+            case 6:
+                new ViewNews().formShowYourPosts(0);
+                break;
+            case 7:
+                new ViewNews().likePost(availablePosts.get(index).getId());
+                break;
+            case 8:
+                new ViewNews().printPostComment(availablePosts.get(index).getId(), 0);
+                break;
+            case 9:
+                if (index == 0) {
+                    Alert.printCyanAlert("There's no more previous posts");
+                } else {
+                    index--;
+                }
+                break;
+            case 10:
+                if (index == availablePosts.size() - 1) {
+                    Alert.printCyanAlert("There's no more next posts");
+                } else {
+                    index++;
+                }
+                break;
+            default:
+                Alert.printRedAlert("Invalid choice!");
+        }
+        mainMenu(index);
+    }
 
     public void menu() {
 
-        int numberNotifications = notificationController.getNotificationById(currentUser.getId()).size();
+        RoleName maxRole = currentUser.getMaxRole();
+
+        if (maxRole == RoleName.USER) {
+
+        } else {
+
+        }
+
+        int numberNotifications = notificationController.getMyNotifications().size();
         String notification = "Notification" + (numberNotifications == 0 ? "" : " (" + numberNotifications + ")");
 
-        RoleName maxRole = currentUser.getMaxRole();
 
         Menu menu = new Menu();
         menu.addHeader("Welcome " + maxRole + ": " + currentUser.getName());
@@ -44,9 +108,9 @@ public class ViewHome {
 
         int choice = Config.getValidInteger();
 
-        if (menu.indexOf("News") == choice) new ViewNews().menu();
-        if(menu.indexOf("Messenger") == choice) new ViewMessenger().menu();
-        if (menu.indexOf(notification) == choice) this.formNotification();
+        if (menu.indexOf("News") == choice) new ViewNews().formShowYourPosts(0);
+        if (menu.indexOf("Messenger") == choice) new ViewMessenger().menu();
+        if (menu.indexOf(notification) == choice) new ViewNotification().formNotification(0);
         if (menu.indexOf("Friend Manager") == choice) {
             new ViewFriend().menu();
         }
@@ -69,20 +133,6 @@ public class ViewHome {
         }
     }
 
-    private void formNotification() {
-        List<Notification> notificationList = notificationController.getNotificationById(currentUser.getId());
-
-        if (notificationList.size() == 0) {
-            System.out.println("Everything is clear!");
-            return;
-        }
-
-        System.out.println("Notification:");
-        for (Notification notification : notificationList) {
-            System.out.println("- " + notification.getNotification());
-        }
-        notificationController.clear(currentUser.getId());
-    }
 
     private void formUserManage() {
 
@@ -231,7 +281,64 @@ public class ViewHome {
             userList = userController.findByRoleName(RoleName.USER);
         }
         return userList;
+    }
 
+    private void printPost(List<Post> postList, int index) {
+        int numberNotice = notificationController.getUnseenNotificationsCount();
+
+        if (postList.isEmpty()) {
+            System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+            System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+            System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┛          ┗━━━━━━━━━┻━━━━━━━━━┫");
+            System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓  ┃");
+            System.out.printf("┃  ┃ " + WHITE_BRIGHT + "( '  _ ')   %-20s" + PURPLE_BRIGHT + "┃ " + WHITE_BRIGHT + " 6. (+) " + BLUE_BRIGHT + " ┃  ┃\n", currentUser.getName());
+            System.out.println("┃  ┣" + PURPLE_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━" + BLUE_BRIGHT + "┫  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃             Have a good day!               ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃       You have no post to reade !          ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃             Let's create one...            ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃           >.<                              ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ┃");
+            System.out.println("┃     " + (index == 0 ? WHITE : WHITE_BRIGHT) + "< 9. Previous |" + WHITE_BRIGHT + " ( " + (index + 1) + " // " + postList.size() + " ) " + (index == postList.size() - 1 ? WHITE : WHITE_BRIGHT) + "| 10. Next  >" + BLUE_BRIGHT + "     ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+            return;
+        }
+
+        Post post = postList.get(index);
+        int likeNumber = likeController.getLikesByPostId(post.getId()).size();
+        int commentNumber = commentController.getCommentsByPostId(post.getId()).size();
+        boolean isLiked = likeController.findLikePost(post.getId()) != -1;
+
+        System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+        System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+        System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+        System.out.println("┣━━━━━━━━━┻━━━━━━━━━┛          ┗━━━━━━━━━┻━━━━━━━━━┫");
+        System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓  ┃");
+        System.out.printf("┃  ┃ " + WHITE_BRIGHT + "( '  _ ')   %-20s" + PURPLE_BRIGHT + "┃ " + WHITE_BRIGHT + " 6. (+) " + BLUE_BRIGHT + " ┃  ┃\n", currentUser.getName());
+        System.out.println("┃  ┣" + PURPLE_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━" + BLUE_BRIGHT + "┫  ┃");
+        System.out.printf("┃  ┃  " + WHITE_BRIGHT + "( '  _ ')   %-29s" + BLUE_BRIGHT + " ┃  ┃\n", userController.findById(post.getIdUser()).getName());
+        System.out.printf("┃  ┃" + WHITE + "  %-10s          " + WHITE_BRIGHT + "%20s  " + BLUE_BRIGHT + "┃  ┃\n", post.getStatus(), postController.getTimePassed(post.getId()));
+        System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.printf("┃  ┃" + WHITE_BRIGHT + "    %-36s    " + BLUE_BRIGHT + "┃  ┃\n", post.getContent());
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.println("┃  ┃                                            ┃  ┃");
+        System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+        System.out.printf("┃  ┃  " + (isLiked ? CYAN_BOLD : WHITE_BRIGHT) + "7. Like: %2d               " + WHITE_BRIGHT + "8. Comment: %2d" + BLUE_BRIGHT + "  ┃  ┃\n", likeNumber, commentNumber);
+        System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ┃");
+        System.out.println("┃     " + (index == 0 ? WHITE : WHITE_BRIGHT) + "< 9. Previous |" + WHITE_BRIGHT + " ( " + (index + 1) + " // " + postList.size() + " ) " + (index == postList.size() - 1 ? WHITE : WHITE_BRIGHT) + "| 10. Next  >" + BLUE_BRIGHT + "     ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
     }
 
 }

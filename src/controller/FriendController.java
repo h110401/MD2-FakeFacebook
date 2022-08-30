@@ -34,7 +34,7 @@ public class FriendController {
                 friendService.save(friend);
                 friendService.updateData();
 
-                notification = userService.getCurrentUser().getName() + " has sent you a friend request!";
+                notification = userService.getCurrentUser().getName() + " sent you a friend request!";
                 notificationService.save(new Notification(idNotification, idTo, notification));
                 return new ResponseMessenger("send_request");
             case SENT_REQUEST:
@@ -44,7 +44,7 @@ public class FriendController {
             case WAIT_ACCEPT:
                 acceptRequest(idCurrent, idTo);
 
-                notification = userService.getCurrentUser().getName() + " has accept your friend request!";
+                notification = userService.getCurrentUser().getName() + " accepted your friend request!";
                 notificationService.save(new Notification(idNotification, idTo, notification));
                 return new ResponseMessenger("accept_request");
         }

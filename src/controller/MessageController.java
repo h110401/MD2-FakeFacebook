@@ -56,7 +56,7 @@ public class MessageController {
 
         chatBoxService.save(chatBox);
 
-        String content = currentUser.getName() + " has sent you a message!";
+        String content = currentUser.getName() + " sent you a message!";
         Notification notification = new Notification(
                 notificationService.getLastId(),
                 msg.getIdTo(),

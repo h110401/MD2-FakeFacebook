@@ -8,17 +8,15 @@ import java.util.Scanner;
 
 public class Config<T> {
 
-    private static Scanner sc;
 
     public static Scanner scanner() {
-        if (sc == null) sc = new Scanner(System.in);
-        return sc;
+        return new Scanner(System.in);
     }
 
     public static String getUnEmptyString() {
         String string;
         while (true) {
-            string = sc.nextLine();
+            string = scanner().nextLine();
             if (string.trim().equals("")) {
                 System.err.println("Invalid input!");
             } else {
@@ -29,17 +27,12 @@ public class Config<T> {
     }
 
     public static int getValidInteger() {
-        int integer;
-        while (true) {
-            String strChoice = Config.scanner().nextLine();
-            if (strChoice.matches("[0-9+]")) {
-                integer = Integer.parseInt(strChoice);
-                break;
-            } else {
-                System.out.println("Invalid choice");
-            }
+        String strChoice = Config.scanner().nextLine();
+        if (strChoice.matches("[0-9]+")) {
+            return Integer.parseInt(strChoice);
+        } else {
+            return -1;
         }
-        return integer;
     }
 
     public T read(String path) {

@@ -75,6 +75,15 @@ public class PostController {
         }
         return yourPosts;
     }
+    public List<Post> getYourPosts(int id) {
+        List<Post> yourPosts = new ArrayList<>();
+        for (Post post : getPostList()) {
+            if (post.getIdUser() == id) {
+                yourPosts.add(post);
+            }
+        }
+        return yourPosts;
+    }
 
     public int getLastId() {
         return postService.getLastId();

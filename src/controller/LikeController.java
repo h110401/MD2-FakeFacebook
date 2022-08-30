@@ -48,7 +48,7 @@ public class LikeController {
             likeService.save(new Like(likeService.getLastId(), currentUser.getId(), idPost, 0));
             User postUser = userService.findById(postService.findById(idPost).getIdUser());
             if (postUser != currentUser) {
-                String notification = currentUser.getName() + " has just liked your post ID: " + idPost;
+                String notification = currentUser.getName() + " liked your post ID: " + idPost;
                 notificationService.save(new Notification(postService.getLastId(), postUser.getId(), notification));
             }
             return new ResponseMessenger("like");
@@ -79,7 +79,7 @@ public class LikeController {
             likeService.save(new Like(likeService.getLastId(), currentUser.getId(), 0, idComment));
             User commentUser = userService.findById(commentService.findById(idComment).getIdUser());
             if (commentUser != currentUser) {
-                String notification = currentUser.getName() + " has just liked your comment ID: " + idComment + ", in post ID: " + idPost;
+                String notification = currentUser.getName() + " liked your comment ID: " + idComment + ", in post ID: " + idPost;
                 notificationService.save(new Notification(notificationService.getLastId(), commentUser.getId(), notification));
             }
             return new ResponseMessenger("like");

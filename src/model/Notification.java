@@ -10,6 +10,8 @@ public class Notification implements Serializable {
     private int idUser;
     private String notification;
 
+    private boolean seen;
+
     public Notification() {
     }
 
@@ -41,6 +43,14 @@ public class Notification implements Serializable {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public boolean isSeen() {
+        return seen;
+    }
+
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 
     @Override
