@@ -229,9 +229,92 @@ public class ViewMainMenu {
                 break;
             case "login_success":
                 Alert.printCyanAlert("Login success!");
+                loadingScene();
+                loadingScene();
                 new ViewHome().mainMenu(0);
         }
         formLogin(username, password, choice);
+    }
+
+    private void loadingScene() {
+        System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "      " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "       " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                " + WHITE_BRIGHT + "|   LOGGING IN   |" + BLUE_BRIGHT + "                ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                   " + WHITE_BRIGHT + "██" + BLUE_BRIGHT + "                             ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "      " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "       " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                " + WHITE_BRIGHT + "|   LOGGING IN   |" + BLUE_BRIGHT + "                ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                   " + WHITE_BRIGHT + "██   ██" + BLUE_BRIGHT + "                        ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "      " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "       " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                " + BLUE_BACKGROUND_BRIGHT + "      " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "          " + BLUE_BRIGHT + "               ┃");
+        System.out.println("┃                  " + BLUE_BACKGROUND_BRIGHT + "    " + WHITE_BACKGROUND_BRIGHT + "   " + BLUE_BRIGHT + BLUE_BACKGROUND_BRIGHT + "        " + BLUE_BRIGHT + "                 ┃");
+        System.out.println("┃                    " + BLUE_BACKGROUND_BRIGHT + "           " + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                " + WHITE_BRIGHT + "|   LOGGING IN   |" + BLUE_BRIGHT + "                ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                   " + WHITE_BRIGHT + "██" + BLUE_BRIGHT + "   " + WHITE_BRIGHT + "██" + BLUE_BRIGHT + "   " + WHITE_BRIGHT + "██" + BLUE_BRIGHT + "                   ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┃                                                  ┃");
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void printLoginView(String username, String password, int choice) {

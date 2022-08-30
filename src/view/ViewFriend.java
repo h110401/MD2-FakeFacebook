@@ -26,6 +26,7 @@ public class ViewFriend {
     private final NotificationController notificationController = new NotificationController();
 
     public void menu() {
+
         int numberNotice = notificationController.getUnseenNotificationsCount();
 
         int numberRequest = friendController.getRequestsToId(currentUser.getId()).size();
@@ -72,7 +73,7 @@ public class ViewFriend {
                 new ViewNotification().formNotification(0);
                 break;
             case 5:
-                new ViewFriend().menu();
+                new ViewHome().menu();
                 break;
             case 6:
                 formFriendList(0);

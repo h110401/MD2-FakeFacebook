@@ -136,4 +136,14 @@ public class UserController {
     public int getLastId() {
         return userService.getLastId();
     }
+
+    public ResponseMessenger changePassword(String oldPassword, String newPassword) {
+        if (!getCurrentUser().getPassword().equals(oldPassword)) {
+            return new ResponseMessenger("not_match");
+        }
+        User user = getCurrentUser();
+        user.setPassword(newPassword);
+        userService.updateData();
+        return new ResponseMessenger("success");
+    }
 }

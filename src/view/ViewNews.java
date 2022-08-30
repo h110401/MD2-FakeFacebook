@@ -106,7 +106,7 @@ public class ViewNews {
             System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
             System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
             System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
-            System.out.println("┣━━━━━━━━━┛         ┗━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
             System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
             System.out.printf("┃  ┃  " + WHITE_BRIGHT + "( ' _ ')   %-28s  " + BLUE_BRIGHT + " ┃  ┃\n", currentUser.getName());
             System.out.println("┃  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫  ┃");
@@ -120,7 +120,7 @@ public class ViewNews {
             System.out.println("┃  ┃                                            ┃  ┃");
             System.out.println("┃  ┃                                            ┃  ┃");
             System.out.println("┃  ┣━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┫  ┃");
-            System.out.println("┃  ┃  create   ┃ edit post┃  delete  ┃   back   ┃  ┃");
+            System.out.println("┃  ┃  "+WHITE_BRIGHT+"create"+BLUE_BRIGHT+"   ┃ "+WHITE_BRIGHT+"edit post"+BLUE_BRIGHT+"┃  "+WHITE_BRIGHT+"delete"+BLUE_BRIGHT+"  ┃   "+WHITE_BRIGHT+"back"+BLUE_BRIGHT+"   ┃  ┃");
             System.out.println("┃  ┃   ( 8 )   ┃  ( 9 )   ┃  ( 10 )  ┃  ( 11 )  ┃  ┃");
             System.out.println("┃  ┗━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┛  ┃");
             System.out.println("┃    " + WHITE + "< 12. Previous |" + WHITE_BRIGHT + " ( 1 // 1 ) " + WHITE + "| 13. Next  >" + BLUE_BRIGHT + "     ┃");
@@ -133,7 +133,7 @@ public class ViewNews {
             System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
             System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
             System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
-            System.out.println("┣━━━━━━━━━┛         ┗━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
             System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
             System.out.printf("┃  ┃  " + WHITE_BRIGHT + "( ' _ ')   %-28s  " + BLUE_BRIGHT + " ┃  ┃\n", currentUser.getName());
             System.out.println("┃  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫  ┃");
@@ -147,7 +147,7 @@ public class ViewNews {
             System.out.println("┃  ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫  ┃");
             System.out.printf("┃  ┃  " + (isLiked ? CYAN_BOLD : WHITE_BRIGHT) + "6. Like: %2d               " + WHITE_BRIGHT + "7. Comment: %2d" + BLUE_BRIGHT + "  ┃  ┃\n", likeNumber, commentNumber);
             System.out.println("┃  ┣━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┫  ┃");
-            System.out.println("┃  ┃  create   ┃ edit post┃  delete  ┃   back   ┃  ┃");
+            System.out.println("┃  ┃  "+WHITE_BRIGHT+"create"+BLUE_BRIGHT+"   ┃ "+WHITE_BRIGHT+"edit post"+BLUE_BRIGHT+"┃  "+WHITE_BRIGHT+"delete"+BLUE_BRIGHT+"  ┃   "+WHITE_BRIGHT+"back"+BLUE_BRIGHT+"   ┃  ┃");
             System.out.println("┃  ┃   ( 8 )   ┃  ( 9 )   ┃  ( 10 )  ┃  ( 11 )  ┃  ┃");
             System.out.println("┃  ┗━━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━━┛  ┃");
             System.out.println("┃    " + (index == 0 ? WHITE : WHITE_BRIGHT) + "< 12. Previous |" + WHITE_BRIGHT + " ( " + (index + 1) + " // " + yourPost.size() + " ) " + (index == yourPost.size() - 1 ? WHITE : WHITE_BRIGHT) + "| 13. Next  >" + BLUE_BRIGHT + "     ┃");

@@ -80,50 +80,303 @@ public class ViewHome {
     }
 
     public void menu() {
+        int numberNotice = notificationController.getUnseenNotificationsCount();
 
         RoleName maxRole = currentUser.getMaxRole();
 
         if (maxRole == RoleName.USER) {
-
+            System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+            System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+            System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┛         ┃");
+            System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+            System.out.println("┃  ┃     " + WHITE + "6. Profile (developing...)                " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "7. Change password                     " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "8. Log out                             " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "9. Exit                                " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ┃");
+            System.out.println("┃    " + WHITE + "< 10. Previous | ( 1 // 1 ) | 11. Next  >" + BLUE_BRIGHT + "     ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
         } else {
-
+            System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+            System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+            System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┛         ┃");
+            System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+            System.out.println("┃  ┃     " + WHITE + "6. Profile                             " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "7. Change password                     " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "8. User manager                        " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "9. Log out                             " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃     " + WHITE_BRIGHT + "10. Exit                               " + BLUE_BRIGHT + "┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃  " + WHITE + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ┃");
+            System.out.println("┃    " + WHITE + "< 10. Previous | ( 1 // 1 ) | 11. Next  >" + BLUE_BRIGHT + "     ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
         }
 
-        int numberNotifications = notificationController.getMyNotifications().size();
-        String notification = "Notification" + (numberNotifications == 0 ? "" : " (" + numberNotifications + ")");
-
-
         Menu menu = new Menu();
-        menu.addHeader("Welcome " + maxRole + ": " + currentUser.getName());
-        menu.addChoice("News");
-        menu.addChoice("Messenger");
-        menu.addChoice(notification);
-        menu.addChoice("Friend Manager");
+        menu.addChoice("Profile");
+        menu.addChoice("Change password");
         if (maxRole == RoleName.ADMIN || maxRole == RoleName.PM) {
             menu.addChoice("User Manage");
         }
         menu.addChoice("Log out");
         menu.addChoice("Exit");
-        menu.print();
 
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.print("┃  Enter your choice: ");
         int choice = Config.getValidInteger();
-
-        if (menu.indexOf("News") == choice) new ViewNews().formShowYourPosts(0);
-        if (menu.indexOf("Messenger") == choice) new ViewMessenger().menu();
-        if (menu.indexOf(notification) == choice) new ViewNotification().formNotification(0);
-        if (menu.indexOf("Friend Manager") == choice) {
-            new ViewFriend().menu();
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        switch (choice) {
+            case 1:
+                new ViewMessenger().menu();
+                break;
+            case 2:
+                new ViewFriend().menu();
+                break;
+            case 3:
+                new ViewHome().mainMenu(0);
+                break;
+            case 4:
+                new ViewNotification().formNotification(0);
+                break;
+            case 5:
+                Alert.printCyanAlert("Already in menu page!");
+                break;
         }
-        if (menu.indexOf("Log out") == choice) {
+
+        if (menu.indexOf("Profile") == choice - 5) {
+            this.formProfile();
+        }
+        if (menu.indexOf("Change password") == choice - 5) {
+            this.formChangePassword("", "", "");
+        }
+        if (menu.indexOf("User Manage") == choice - 5) {
+            this.formUserManage();
+        }
+        if (menu.indexOf("Log out") == choice - 5) {
+            Alert.printCyanAlert("LOG OUT");
             userController.logout();
             new ViewMainMenu().menu();
             return;
         }
-        if (menu.indexOf("User Manage") == choice) this.formUserManage();
-        if (menu.indexOf("Exit") == choice) System.exit(0);
-        if (choice > menu.choiceCount()) System.err.println("Invalid choice");
+        if (menu.indexOf("Exit") == choice - 5) {
+            Alert.printCyanAlert("Goodbye!");
+            System.exit(0);
+        }
+        if (choice - 5 > menu.choiceCount()) {
+            Alert.printRedAlert("Invalid choice!");
+        }
 
         menu();
+    }
+
+    private void formChangePassword(String oldPassword, String newPassword, String repeat) {
+        int numberNotice = notificationController.getUnseenNotificationsCount();
+
+        boolean not_match = !newPassword.equals(repeat) && !newPassword.isEmpty() && !repeat.isEmpty();
+        if (not_match) {
+            System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+            System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+            System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+            System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "6. Old password:" + BLUE_BRIGHT + "                         ┃  ┃");
+            System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+            System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", oldPassword);
+            System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "7. New password:" + BLUE_BRIGHT + "                         ┃  ┃");
+            System.out.println("┃  ┃  " + RED_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" + BLUE_BRIGHT + "                ┃  ┃");
+            System.out.printf("┃  ┃  " + RED_BRIGHT + "┃  %-20s  ┃" + BLUE_BRIGHT + "                ┃  ┃\n", newPassword);
+            System.out.println("┃  ┃  " + RED_BRIGHT + "┗━━━━━━━━━━━━━━━━━━━━━━━━┛" + BLUE_BRIGHT + "                ┃  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "8. Repeat password:" + BLUE_BRIGHT + "                      ┃  ┃");
+            System.out.println("┃  ┃  " + RED_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" + BLUE_BRIGHT + "                ┃  ┃");
+            System.out.printf("┃  ┃  " + RED_BRIGHT + "┃  %-20s  ┃" + BLUE_BRIGHT + "                ┃  ┃\n", repeat);
+            System.out.println("┃  ┃  " + RED_BRIGHT + "┗━━━━━━━━━━━━━━━━━━━━━━━━┛" + BLUE_BRIGHT + "                ┃  ┃");
+            System.out.println("┃  ┃                                            ┃  ┃");
+            System.out.println("┃  ┃   " + RED_BRIGHT + "Repeat password does not match!" + BLUE_BRIGHT + "          ┃  ┃");
+            System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛  ┃");
+            System.out.println("┃                                                  ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+        } else {
+            System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+            System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+            System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+            System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+            System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "6. Old password:" + BLUE_BRIGHT + "                         ┃  ┃");
+            System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+            System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", oldPassword);
+            System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "7. New password:" + BLUE_BRIGHT + "                         ┃  ┃");
+            System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+            System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", newPassword);
+            System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+            System.out.println("┃  ┃   " + WHITE_BRIGHT + "8. Repeat password:" + BLUE_BRIGHT + "                      ┃  ┃");
+            System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+            System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", repeat);
+            System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+            System.out.println("┃  ┃                              ┏━━━━━━━━━━━━━┫  ┃");
+            System.out.println("┃  ┃                              ┃  " + GREEN_BOLD_BRIGHT + "9. Submit" + BLUE_BRIGHT + "  ┃  ┃");
+            System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┃");
+            System.out.println("┃                                                  ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+        }
+
+
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.print("┃  Enter your choice: ");
+        int choice = Config.getValidInteger();
+        System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+        switch (choice) {
+            case 1:
+                new ViewMessenger().menu();
+                break;
+            case 2:
+                new ViewFriend().menu();
+                break;
+            case 3:
+                new ViewHome().mainMenu(0);
+                break;
+            case 4:
+                new ViewNotification().formNotification(0);
+                break;
+            case 5:
+                new ViewHome().menu();
+                break;
+            case 6:
+                System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+                System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+                System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+                System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+                System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + " 6. Old password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.printf("┃  ┃  " + CYAN_BRIGHT + "┃  %-20s  ┃" + BLUE_BRIGHT + "                ┃  ┃\n", oldPassword);
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┗━━━━━━━━━━━━━━━━━━━━━━━━┛" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "7. New password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", newPassword);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "8. Repeat password:" + BLUE_BRIGHT + "                      ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", repeat);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃                              ┏━━━━━━━━━━━━━┫  ┃");
+                System.out.println("┃  ┃                              ┃  " + GREEN_BOLD_BRIGHT + "9. Submit" + BLUE_BRIGHT + "  ┃  ┃");
+                System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┃");
+                System.out.println("┃                                                  ┃");
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.print("┃  Enter old password: ");
+                oldPassword = Config.scanner().nextLine();
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                break;
+            case 7:
+                System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+                System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+                System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+                System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+                System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "6. Old password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", oldPassword);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃   " + CYAN_BRIGHT + "7. New password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.printf("┃  ┃  " + CYAN_BRIGHT + "┃  %-20s  ┃" + BLUE_BRIGHT + "                ┃  ┃\n", newPassword);
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┗━━━━━━━━━━━━━━━━━━━━━━━━┛" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "8. Repeat password:" + BLUE_BRIGHT + "                      ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", repeat);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃                              ┏━━━━━━━━━━━━━┫  ┃");
+                System.out.println("┃  ┃                              ┃  " + GREEN_BOLD_BRIGHT + "9. Submit" + BLUE_BRIGHT + "  ┃  ┃");
+                System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┃");
+                System.out.println("┃                                                  ┃");
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.print("┃  Enter new password: ");
+                newPassword = Config.scanner().nextLine();
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                break;
+            case 8:
+                System.out.println(BLUE_BRIGHT + "┏━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┓");
+                System.out.println("┃   " + WHITE_BRIGHT + "Mess" + BLUE_BRIGHT + "  ┃ " + WHITE_BRIGHT + "Friends" + BLUE_BRIGHT + " ┃   " + WHITE_BRIGHT + "Home" + BLUE_BRIGHT + "   ┃" + WHITE_BRIGHT + (numberNotice == 0 ? " Notice  " : " Noti" + RED_BOLD_BRIGHT + "(" + numberNotice + ") ") + BLUE_BOLD_BRIGHT + BLUE_BRIGHT + "┃  " + WHITE_BRIGHT + "Menu" + BLUE_BRIGHT + "   ┃");
+                System.out.println("┃  ( 1 )  ┃  ( 2 )  ┃  (  3 )  ┃  ( 4 )  ┃  ( 5 )  ┃");
+                System.out.println("┣━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━━┻━━━━━━━━━┻━━━━━━━━━┫");
+                System.out.println("┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "6. Old password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", oldPassword);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃   " + WHITE_BRIGHT + "7. New password:" + BLUE_BRIGHT + "                         ┃  ┃");
+                System.out.println("┃  ┃  ┏━━━━━━━━━━━━━━━━━━━━━━━━┓                ┃  ┃");
+                System.out.printf("┃  ┃  ┃  %-20s  ┃                ┃  ┃\n", newPassword);
+                System.out.println("┃  ┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━┛                ┃  ┃");
+                System.out.println("┃  ┃   " + CYAN_BRIGHT + "8. Repeat password:" + BLUE_BRIGHT + "                      ┃  ┃");
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.printf("┃  ┃  " + CYAN_BRIGHT + "┃  %-20s  ┃" + BLUE_BRIGHT + "                ┃  ┃\n", repeat);
+                System.out.println("┃  ┃  " + CYAN_BRIGHT + "┗━━━━━━━━━━━━━━━━━━━━━━━━┛" + BLUE_BRIGHT + "                ┃  ┃");
+                System.out.println("┃  ┃                              ┏━━━━━━━━━━━━━┫  ┃");
+                System.out.println("┃  ┃                              ┃  " + GREEN_BOLD_BRIGHT + "9. Submit" + BLUE_BRIGHT + "  ┃  ┃");
+                System.out.println("┃  ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━┛  ┃");
+                System.out.println("┃                                                  ┃");
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.print("┃  Repeat new password: ");
+                repeat = Config.scanner().nextLine();
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                break;
+            case 9:
+                if (oldPassword.isEmpty() || newPassword.isEmpty() || repeat.isEmpty() || not_match) {
+                    Alert.printRedAlert("Please check your input!!!");
+                    break;
+                } else {
+                    ResponseMessenger messenger = userController.changePassword(oldPassword, newPassword);
+                    switch (messenger.getMessage()) {
+                        case "not_match":
+                            Alert.printRedAlert("Old password not match!!!");
+                            oldPassword = "";
+                            newPassword = "";
+                            repeat = "";
+                            break;
+                        case "success":
+                            Alert.printCyanAlert("Change password successfully!");
+                            userController.logout();
+                            new ViewMainMenu().menu();
+                            break;
+                    }
+                }
+                break;
+            default:
+                Alert.printRedAlert("Invalid choice!");
+        }
+
+        formChangePassword(oldPassword, newPassword, repeat);
+    }
+
+    private void formProfile() {
+        Alert.printRedAlert("This function is in developing...");
     }
 
     private void showUserList() {
@@ -295,9 +548,9 @@ public class ViewHome {
             System.out.printf("┃  ┃ " + WHITE_BRIGHT + "( '  _ ')   %-20s" + PURPLE_BRIGHT + "┃ " + WHITE_BRIGHT + " 6. (+) " + BLUE_BRIGHT + " ┃  ┃\n", currentUser.getName());
             System.out.println("┃  ┣" + PURPLE_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━" + BLUE_BRIGHT + "┫  ┃");
             System.out.println("┃  ┃                                            ┃  ┃");
-            System.out.println("┃  ┃             Have a good day!               ┃  ┃");
+            System.out.println("┃  ┃              Have a good day!              ┃  ┃");
             System.out.println("┃  ┃                                            ┃  ┃");
-            System.out.println("┃  ┃       You have no post to reade !          ┃  ┃");
+            System.out.println("┃  ┃         You have no post to read !         ┃  ┃");
             System.out.println("┃  ┃                                            ┃  ┃");
             System.out.println("┃  ┃             Let's create one...            ┃  ┃");
             System.out.println("┃  ┃                                            ┃  ┃");
